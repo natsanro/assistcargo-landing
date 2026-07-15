@@ -68,6 +68,12 @@
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
         .social-proof strong { color: var(--blanco); }
 
+        /* HERO - Bloque de intriga (preguntas disparadoras) */
+        .intrigue { display: flex; flex-direction: column; gap: 14px; max-width: 720px; margin: 0 auto 40px; position: relative; }
+        .intrigue-q { display: flex; align-items: flex-start; gap: 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--gris-oscuro); border-radius: var(--radius-md); padding: 18px 22px; font-size: 17px; color: var(--blanco); line-height: 1.45; text-align: left; transition: border-color var(--t-med); }
+        .intrigue-q:hover { border-color: var(--verde); }
+        .intrigue-q::before { content: "?"; flex-shrink: 0; width: 26px; height: 26px; background: var(--verde); color: var(--negro); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; }
+
         /* SECTIONS BASE */
         section { padding: var(--space-md) 5%; position: relative; }
         .container { max-width: 1100px; margin: 0 auto; }
@@ -99,6 +105,25 @@
 
         /* SEC BENEFICIOS */
         .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 16px; }
+        .cards-4 { grid-template-columns: repeat(4, 1fr); }
+
+        /* SEC CONCEPTO - explicación didáctica del seguro por viaje */
+        .concepto-analogy { font-size: 18.5px; color: var(--blanco); max-width: 780px; margin: 0 auto; text-align: center; line-height: 1.6; background: rgba(57,181,74,0.06); border: 1px solid rgba(57,181,74,0.28); border-radius: var(--radius-md); padding: 26px 30px; }
+        .concepto-analogy strong { color: var(--verde); }
+        .concepto-flow { display: flex; align-items: stretch; justify-content: center; margin-top: 40px; }
+        .concepto-step { flex: 1; background: var(--negro-card); border: 1px solid var(--gris-oscuro); border-radius: var(--radius-md); padding: 30px 22px; text-align: center; transition: border-color var(--t-med), transform var(--t-med); }
+        .concepto-step:hover { border-color: var(--verde); transform: translateY(-4px); }
+        .concepto-step-icon { width: 56px; height: 56px; border-radius: 50%; background: rgba(57,181,74,0.12); display: flex; align-items: center; justify-content: center; font-size: 26px; margin: 0 auto 18px; }
+        .concepto-step-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--verde); margin-bottom: 8px; }
+        .concepto-step-title { font-size: 16.5px; font-weight: 700; color: var(--blanco); margin-bottom: 10px; line-height: 1.3; }
+        .concepto-step-desc { font-size: 13px; color: var(--gris-claro); line-height: 1.6; }
+        .concepto-arrow { display: flex; align-items: center; color: var(--verde); font-size: 26px; padding: 0 8px; flex-shrink: 0; }
+        .concepto-cierre { text-align: center; font-size: 18px; color: var(--gris-claro); max-width: 700px; margin: 40px auto 0; line-height: 1.6; }
+        .concepto-cierre strong { color: var(--blanco); }
+        @media (max-width: 768px) {
+            .concepto-flow { flex-direction: column; }
+            .concepto-arrow { transform: rotate(90deg); padding: 10px 0; justify-content: center; }
+        }
         .card { background: var(--negro-card); border: 1px solid var(--gris-oscuro); padding: 36px 32px; border-radius: var(--radius-md); transition: all var(--t-med); position: relative; }
         .card:hover { border-color: var(--verde); transform: translateY(-4px); }
         .card-num { position: absolute; top: 24px; right: 28px; font-size: 60px; font-weight: 800; color: rgba(57,181,74,0.15); line-height: 1; letter-spacing: -2px; }
@@ -191,6 +216,7 @@
             .testimonial-grid { grid-template-columns: 1fr; }
             .respaldo-cards { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .cards-4 { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             .navbar { padding: 14px 5%; }
@@ -199,7 +225,7 @@
             .headline { font-size: 34px; letter-spacing: -1px; }
             .subheadline { font-size: 16px; }
             .section-title { font-size: 26px; }
-            .cards-3, .pasos, .faq-grid { grid-template-columns: 1fr; gap: 16px; }
+            .cards-3, .cards-4, .pasos, .faq-grid { grid-template-columns: 1fr; gap: 16px; }
             .calc-result-num { font-size: 40px; }
             section { padding: var(--space-xs) 5%; }
             .hero { padding: 60px 5% 50px; }
@@ -222,22 +248,67 @@
         </div>
         <span class="cobrand">en alianza con <strong>Chubb</strong></span>
     </div>
-    <a href="#calculo" class="btn btn-ghost">Ver el cálculo</a>
+    <a href="#que-es" class="btn btn-ghost">Conoce más</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
     <div class="eyebrow">Para empresas de GPS integradas con Assistcargo</div>
-    <h1 class="headline">Tu red de GPS instalados es tu <span class="accent">próxima fuente de ingresos</span>.</h1>
-    <p class="subheadline">Un camión con GPS hace mínimo 4 viajes al mes. Máximo 20. Cada uno puede ser una póliza. Cada póliza, un ingreso adicional.</p>
+    <h1 class="headline">Tus <span class="accent">GPS instalados</span> son tu próxima fuente de ingresos.</h1>
+    <p class="subheadline">Antes de contarte de qué se trata, tres preguntas:</p>
 
-    <div class="hero-cta-row">
-        <a href="#formulario" class="btn btn-primary btn-large">Agendar 30 minutos →</a>
+    <div class="intrigue">
+        <div class="intrigue-q">¿Sabías que por cada viaje que hacen tus clientes podrías recibir un ingreso adicional?</div>
+        <div class="intrigue-q">¿Sabías que puedes multiplicar los ingresos que hoy recibes por cada GPS instalado?</div>
+        <div class="intrigue-q">¿Sabías que todo esto es posible sin generarte ninguna tarea administrativa?</div>
     </div>
 
-    <div class="social-proof">
-        <span class="social-proof-dot" aria-hidden="true"></span>
-        <span><strong>Ontracking</strong> y <strong>Atlántida</strong> ya multiplican sus ingresos con esto</span>
+    <div class="hero-cta-row">
+        <a href="#que-es" class="btn btn-primary btn-large">Conoce más →</a>
+    </div>
+</section>
+
+<!-- SEC CONCEPTO - explicación didáctica del seguro por viaje -->
+<section id="que-es">
+    <div class="container">
+        <div class="section-eyebrow">El concepto, en 10 segundos</div>
+        <h2 class="section-title">Un seguro que se paga <span class="accent">por viaje</span>, no por año.</h2>
+
+        <div class="concepto-analogy">
+            Piénsalo como el seguro de un vuelo: no aseguras los 365 días del año, <strong>aseguras el viaje que haces</strong>. Tu cliente lo cotiza en un minuto, paga solo ese viaje y queda cubierto por Chubb.
+        </div>
+
+        <div class="concepto-flow">
+            <div class="concepto-step">
+                <div class="concepto-step-icon" aria-hidden="true">📍</div>
+                <div class="concepto-step-num">PASO 01</div>
+                <div class="concepto-step-title">Tu cliente ya tiene tu GPS</div>
+                <div class="concepto-step-desc">La unidad con tu GPS cumple el único requisito de la aseguradora. Ya está listo, sin hacer nada nuevo.</div>
+            </div>
+            <div class="concepto-arrow" aria-hidden="true">→</div>
+            <div class="concepto-step">
+                <div class="concepto-step-icon" aria-hidden="true">🚚</div>
+                <div class="concepto-step-num">PASO 02</div>
+                <div class="concepto-step-title">Asegura un viaje</div>
+                <div class="concepto-step-desc">Antes de salir, cotiza y asegura la carga de ese viaje en 1 minuto, desde tu link.</div>
+            </div>
+            <div class="concepto-arrow" aria-hidden="true">→</div>
+            <div class="concepto-step">
+                <div class="concepto-step-icon" aria-hidden="true">🛡️</div>
+                <div class="concepto-step-num">PASO 03</div>
+                <div class="concepto-step-title">Chubb lo cubre</div>
+                <div class="concepto-step-desc">Ese viaje queda protegido. Sin deducible y sin contrato anual: paga solo lo que usa.</div>
+            </div>
+            <div class="concepto-arrow" aria-hidden="true">→</div>
+            <div class="concepto-step">
+                <div class="concepto-step-icon" aria-hidden="true">💵</div>
+                <div class="concepto-step-num">PASO 04</div>
+                <div class="concepto-step-title">Tú cobras</div>
+                <div class="concepto-step-desc">Por cada póliza emitida desde tu link, recibes un ingreso. Sin gestionar nada.</div>
+            </div>
+        </div>
+
+        <p class="concepto-cierre">Un viaje es un ingreso. ¿Y si lo multiplicas por <strong>todos los viajes que hacen tus clientes</strong>? Ese es el cálculo 👇</p>
     </div>
 </section>
 
@@ -294,10 +365,11 @@
 <!-- SEC BENEFICIOS -->
 <section>
     <div class="container">
-        <div class="section-eyebrow">Los tres beneficios</div>
+        <div class="section-eyebrow">Los beneficios</div>
         <h2 class="section-title">No solo <span class="accent">multiplicas ingresos</span>.</h2>
+        <p class="section-intro">Esta es una herramienta para rentabilizar tu cartera actual de clientes. No sales a vender seguros: le sumas valor al servicio que ya les das.</p>
 
-        <div class="cards-3">
+        <div class="cards-3 cards-4">
             <div class="card">
                 <div class="card-num">01</div>
                 <div class="card-icon" aria-hidden="true">
@@ -306,8 +378,8 @@
                         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                     </svg>
                 </div>
-                <div class="card-title">Capitaliza tu cartera</div>
-                <div class="card-desc">2x a 5x el ingreso mensual por cada camión con GPS instalado, según la frecuencia de viajes.</div>
+                <div class="card-title">Capitalizas tu cartera</div>
+                <div class="card-desc">Un ingreso recurrente nuevo por cada camión con GPS — sobre clientes que ya tienes, sin invertir.</div>
             </div>
             <div class="card">
                 <div class="card-num">02</div>
@@ -319,19 +391,29 @@
                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                     </svg>
                 </div>
-                <div class="card-title">Fidelizas al cliente</div>
-                <div class="card-desc">Le das a tu cliente algo que la competencia no ofrece. Tu servicio deja de ser reemplazable.</div>
+                <div class="card-title">Fidelizas a tus clientes</div>
+                <div class="card-desc">Les das algo que la competencia no ofrece. Y si cambian de proveedor de GPS, pierden el acceso al seguro: menos rotación.</div>
             </div>
             <div class="card">
                 <div class="card-num">03</div>
                 <div class="card-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                        <polyline points="17 6 23 6 23 12"></polyline>
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                     </svg>
                 </div>
-                <div class="card-title">Aumentas retención</div>
-                <div class="card-desc">Si tu cliente cambia de proveedor de GPS, pierde el acceso al seguro. Menos rotación de clientes, más retención.</div>
+                <div class="card-title">Aumentas el valor de tu marca</div>
+                <div class="card-desc">Tu servicio pasa de "rastreo" a "rastreo + protección". Sube el valor percibido frente a tus clientes.</div>
+            </div>
+            <div class="card">
+                <div class="card-num">04</div>
+                <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 4v6h-6"></path>
+                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                    </svg>
+                </div>
+                <div class="card-title">Reactivas prospectos</div>
+                <div class="card-desc">Un diferencial nuevo para volver a tocar la puerta de los clientes que todavía no cerraste.</div>
             </div>
         </div>
     </div>
@@ -366,33 +448,22 @@
 <!-- SEC PASOS -->
 <section>
     <div class="container">
-        <div class="section-eyebrow">Cómo funciona</div>
-        <h2 class="section-title">Es más simple de lo que <span class="accent">crees</span>.</h2>
-        <p class="section-intro">No hay integración técnica compleja. Tryger te arma todo. Tú solo compartes el link con tus clientes. Nosotros te contactamos con Tryger.</p>
+        <div class="section-eyebrow">Tu parte</div>
+        <h2 class="section-title">Lo único que <span class="accent">haces tú</span>.</h2>
+        <p class="section-intro">El resto ya lo viste: el transportista asegura su viaje y Chubb lo cubre. Tu trabajo se reduce a tres cosas — y Tryger te arma el material para las tres.</p>
 
-        <div class="pasos">
+        <div class="pasos" style="grid-template-columns: repeat(3, 1fr);">
             <div class="paso">
-                <div class="paso-num">PASO 01</div>
-                <div class="paso-title">Recibes tu URL personalizada</div>
-                <div class="paso-desc">Te asignamos un link único para tu empresa. Todo lo que pase desde ahí queda asociado a tu cuenta.</div>
-                <div class="paso-hint">Tryger te da las sugerencias de dónde colocarlo.</div>
+                <div class="paso-title">1 · Recibes tu link</div>
+                <div class="paso-desc">Te asignamos una URL única para tu empresa. Todo lo contratado desde ahí queda asociado a tu cuenta.</div>
             </div>
             <div class="paso">
-                <div class="paso-num">PASO 02</div>
-                <div class="paso-title">Lo colocas donde quieras</div>
-                <div class="paso-desc">En tu web, como botón en el menú. O como pop-up dentro de tu plataforma. Elige el lugar que mejor funcione para tus clientes.</div>
-                <div class="paso-hint">Tryger te guía con las mejores prácticas del sector.</div>
+                <div class="paso-title">2 · Lo colocas donde quieras</div>
+                <div class="paso-desc">Como botón en tu web o pop-up dentro de tu plataforma. Donde mejor funcione para tus clientes.</div>
             </div>
             <div class="paso">
-                <div class="paso-num">PASO 03</div>
-                <div class="paso-title">Avisas a tus clientes</div>
-                <div class="paso-desc">Les mandas un email contándoles el beneficio: "Por ser cliente de [tu empresa], ahora puedes cotizar seguro de carga por cada viaje que necesites".</div>
-                <div class="paso-hint">Tryger te da las plantillas de email listas para usar.</div>
-            </div>
-            <div class="paso">
-                <div class="paso-num">PASO 04</div>
-                <div class="paso-title">Cobras tu ingreso</div>
-                <div class="paso-desc">Cada póliza contratada desde tu link te suma un ingreso adicional. Recibes el reporte mes a mes.</div>
+                <div class="paso-title">3 · Avisas a tus clientes</div>
+                <div class="paso-desc">Con las plantillas de email que te damos listas. Y ya: cada póliza desde tu link es un ingreso.</div>
             </div>
         </div>
 
@@ -403,48 +474,8 @@
                 </svg>
             </div>
             <div class="callout-content">
-                <strong>Tryger hace todo por ti.</strong>
-                Tryger te da el link, las plantillas de email, los textos sugeridos y los ejemplos visuales. Tú solo eliges dónde colocarlo y cuándo avisar a tus clientes.
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SEC TESTIMONIALES -->
-<section class="seccion-testimonials">
-    <div class="container">
-        <div class="section-eyebrow">Casos reales</div>
-        <h2 class="section-title">Ya lo están haciendo.</h2>
-
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-quote-icon">"</div>
-                <div class="testimonial-text placeholder">
-                    [ Placeholder para testimonial de Ana de Ontracking ]<br><br>
-                    Ejemplo: "Nuestros clientes están contentos con la opción de seguro. Nos ayuda a diferenciarnos y sumamos ingresos sin cambiar nuestra operación."
-                </div>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">A</div>
-                    <div class="testimonial-author-info">
-                        <h4>Ana [Apellido]</h4>
-                        <p>Ontracking</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-quote-icon">"</div>
-                <div class="testimonial-text placeholder">
-                    [ Placeholder para testimonial de Atlántida ]<br><br>
-                    Ejemplo: "Integramos el cotizador en menos de una hora. Hoy es una fuente de ingresos que no teníamos antes."
-                </div>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">A</div>
-                    <div class="testimonial-author-info">
-                        <h4>[Nombre]</h4>
-                        <p>Atlántida</p>
-                    </div>
-                </div>
+                <strong>Cero tarea administrativa.</strong>
+                Tú no cotizas, no cobras, no gestionas pólizas ni siniestros: de eso se encargan el transportista, Chubb y Tryger. Tú solo compartes tu link y recibes el ingreso. Tryger te da el link, las plantillas y los textos listos para usar.
             </div>
         </div>
     </div>
@@ -453,7 +484,7 @@
 <!-- SEC FORMULARIO -->
 <section class="seccion-form" id="formulario">
     <div class="form-proof">
-        🟢 Ontracking y Atlántida ya multiplican sus ingresos con esto. Tú puedes hacer lo mismo en 30 minutos.
+        🟢 Otras empresas de GPS ya suman este ingreso sobre su cartera actual. Tú puedes hacer el cálculo en 30 minutos.
     </div>
 
     <div class="form-wrapper">
@@ -518,10 +549,6 @@
 
         <div class="faq-grid">
             <div class="faq-item">
-                <div class="faq-question">¿Cuánto puedo multiplicar mi ingreso exactamente?</div>
-                <div class="faq-answer">Entre 2x y 5x el ingreso mensual por cada camión, dependiendo de la frecuencia de viajes. Un camión que hace 4 viajes al mes te suma menos que uno que hace 20. En la llamada calculamos con tus números reales.</div>
-            </div>
-            <div class="faq-item">
                 <div class="faq-question">¿Tengo que ser cliente de Assistcargo?</div>
                 <div class="faq-answer">No. Si tu plataforma ya envía señales a Assistcargo (como te lo pidió algún cliente Falabella, Unilever, o cualquier gran embarcador), estás dentro. Esta oportunidad es para empresas de GPS integradas, no para clientes de Assistcargo.</div>
             </div>
@@ -532,10 +559,6 @@
             <div class="faq-item">
                 <div class="faq-question">¿Qué hace mi equipo técnico?</div>
                 <div class="faq-answer">Solo agrega un botón a tu sitio público y un pop-up dentro del sistema interno. Tiempo total estimado: 1 hora.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">¿Tengo que vender el seguro yo?</div>
-                <div class="faq-answer">No. Tú solo abres el acceso al cotizador en tu plataforma. El transportista cotiza, paga y queda asegurado directamente con Chubb. Tú solo cobras el fee por cada póliza emitida.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">¿Cómo se paga el fee?</div>
